@@ -1,0 +1,14 @@
+이텔리제이 참고형식으로 @RequiredArgsConstructor 사용하여
+다형성을 상속받지않고 그대로 값을 넘기는 작업을 진행하였다
+Controller -> Member_Service -> Member_Repository <-> Mapper
+													↓
+											Mapper.XML 
+											
+하지만 다형성이 안쓰면 코딩이 한곳으로 몰리게된다. 그렇기에 현장에선 interface를 함수를 복잡하지않게
+값을 담기위해 자주사용하는듯하다. 다음작업을 진행한다
+Controller -> Interface_Service -> Member_Service 
+-> Interface_Repository -> Member_Repository <-> Mapper
+											↓
+										Mapper.XML
+Inteface(다형석) 사용함으로 써 함수를 만들어 그값을 저장되고 
+언제든지 필요한 값이 저장된 함수를 가져올수가 있다

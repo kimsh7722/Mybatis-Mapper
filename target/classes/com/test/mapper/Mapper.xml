@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.test.mapper.Mapper">
+		
+	<!-- 타입 이론
+		resultType : select 된 데이터를 반환할 (그릇)을 정해주는것, DTO 객체에 담긴다
+		parameterType : 자바에서 String 값이 들어올거란걸 인지시켜주고 , 쿼리에서 자바에서 보낸 stk_nm을 사용한다
+		${} : 컬럼명이 동적으로 사용할때 ${dto.컬럼명}=값, ibatis-> $컬럼명$=값
+		#{} : 퀄리문 사용할 값
+	 -->
+	<insert id="InsertJoin" >
+			<!-- └패키지에있는 class함수 받아오기 └담을 객체위치 불러오기 -->
+		<!-- insert into test_member	values (#{email}, #{password}, #{memberName}, #{age}, #{phone}) -->
+		insert into member_join values(#{email},#{password},#{pwdchk},
+		#{memberName},#{year+month+day},#{tel1+tel2+tel3},#{phone1+phone2+phone3},
+		#{emailid+@+subemail},#{emailchk},#{addr},#{grade})
+	</insert>
+	
+	<!-- SELECT -->
+	<select id="AllSelect" resultType="com.test.dto.memberDto">
+		Select * from test_member
+	</select>
+</mapper>
